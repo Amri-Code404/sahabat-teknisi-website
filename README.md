@@ -1,58 +1,261 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SahabatTeknisi — Admin Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+SahabatTeknisi adalah aplikasi jasa servis komputer dan jaringan Wi-Fi yang dibuat untuk membantu proses pengelolaan layanan servis, pelanggan, teknisi, transaksi, dan laporan.
 
-## About Laravel
+Repository ini berisi **aplikasi web admin SahabatTeknisi** yang digunakan oleh admin sekaligus pemilik toko untuk mengelola berbagai data dan aktivitas yang berkaitan dengan layanan servis.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> **Catatan:** Repository ini merupakan bagian admin web dari project SahabatTeknisi. Aplikasi Android merupakan bagian terpisah dari project ini.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur
 
-## Learning Laravel
+Admin web SahabatTeknisi menyediakan beberapa fitur utama:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* Dashboard
+* Pengelolaan data pelanggan
+* Pengelolaan data teknisi
+* Pengelolaan data servisan
+* Pengelolaan transaksi
+* Pengelolaan data lainnya yang berkaitan dengan operasional servis
+* Melihat laporan
+* Mencetak laporan
+* Autentikasi admin
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Teknologi
 
-## Agentic Development
+Project ini dibangun menggunakan:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+* Laravel 12
+* PHP
+* MySQL
+* Laragon
+* Blade
+
+MySQL digunakan sebagai database selama proses pengembangan dan dijalankan melalui Laragon.
+
+---
+
+## Persyaratan
+
+Sebelum menjalankan project, pastikan perangkat sudah memiliki:
+
+* PHP
+* Composer
+* MySQL
+* Laragon
+* Git
+
+Pastikan versi PHP yang digunakan kompatibel dengan Laravel 12.
+
+---
+
+## Instalasi
+
+### 1. Clone repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Amri-Code404/sahabat-teknisi-website
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder project:
 
-## Contributing
+```bash
+cd nama-folder-project
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install dependency
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Buat file environment
 
-## Security Vulnerabilities
+Salin `.env.example` menjadi `.env`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
 
-## License
+Pada Windows, file tersebut juga dapat disalin secara manual kemudian diubah namanya menjadi `.env`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Konfigurasi database
+
+Buka file `.env` dan sesuaikan konfigurasi database MySQL.
+
+Contoh:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sahabatteknisi
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Sesuaikan nama database, username, dan password dengan konfigurasi MySQL pada perangkat masing-masing.
+
+### 6. Migrasi database
+
+Jalankan:
+
+```bash
+php artisan migrate
+```
+
+Jika project menggunakan seeder:
+
+```bash
+php artisan db:seed
+```
+
+Atau:
+
+```bash
+php artisan migrate --seed
+```
+
+### 7. Jalankan aplikasi
+
+Jalankan server development Laravel:
+
+```bash
+php artisan serve
+```
+
+Kemudian buka alamat yang diberikan oleh Laravel, biasanya:
+
+```text
+http://127.0.0.1:8000
+```
+
+Project juga dapat dijalankan menggunakan environment Laragon sesuai konfigurasi yang digunakan.
+
+---
+
+## Akun Admin
+
+Project menyediakan akun admin untuk mengakses halaman administrasi.
+
+Informasi password tidak dicantumkan di repository untuk menghindari penyimpanan kredensial secara terbuka.
+
+Jika akun admin dibuat melalui seeder, silakan periksa file seeder yang tersedia pada source code.
+
+---
+
+## Database
+
+Project menggunakan MySQL sebagai database.
+
+Pada lingkungan pengembangan, MySQL dijalankan melalui Laragon.
+
+Struktur database dikelola menggunakan migration Laravel:
+
+```bash
+php artisan migrate
+```
+
+Jika tersedia seeder:
+
+```bash
+php artisan db:seed
+```
+
+Repository ini tidak menyertakan database MySQL secara langsung. Struktur database dikelola melalui migration Laravel.
+
+---
+
+## Struktur Project
+
+Struktur aplikasi mengikuti struktur standar Laravel:
+
+```text
+sahabatteknisi/
+├── app/
+│   ├── Http/
+│   ├── Models/
+│   └── ...
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+├── resources/
+│   └── views/
+├── routes/
+│   └── web.php
+├── storage/
+├── tests/
+├── .env.example
+├── artisan
+├── composer.json
+└── README.md
+```
+
+Struktur sebenarnya dapat berbeda sesuai perkembangan project.
+
+---
+
+## Integrasi dengan Aplikasi Android
+
+SahabatTeknisi juga memiliki aplikasi Android yang dikembangkan sebagai bagian dari project yang sama.
+
+Saat ini admin web dan aplikasi Android belum memiliki integrasi langsung. Pengembangan selanjutnya direncanakan menggunakan Firebase sebagai salah satu teknologi untuk mendukung integrasi dengan aplikasi Android.
+
+Integrasi tersebut masih merupakan bagian dari pengembangan selanjutnya.
+
+---
+
+## Status Project
+
+Project ini telah selesai dikembangkan untuk kebutuhan project kuliah dan saat ini masih berjalan pada lingkungan lokal.
+
+```text
+Status       : Selesai untuk kebutuhan project
+Environment  : Local Development
+Deployment   : Belum dipublikasikan
+```
+
+Meskipun awalnya dibuat untuk kebutuhan tugas kuliah, repository ini dikelola sebagai project pengembangan aplikasi dan masih dapat dikembangkan lebih lanjut.
+
+---
+
+## Pengembangan Selanjutnya
+
+Beberapa pengembangan yang dapat dilakukan di masa mendatang:
+
+* Integrasi admin web dengan aplikasi Android
+* Integrasi Firebase
+* Penyediaan API untuk aplikasi Android
+* Deployment ke server
+* Peningkatan sistem autentikasi dan keamanan
+* Pengembangan laporan yang lebih lengkap
+* Pengembangan notifikasi status servis
+* Peningkatan tampilan dan pengalaman pengguna
+
+---
+
+## Lisensi
+
+Project ini menggunakan **MIT License**.
+
+Lisensi ini memungkinkan kode digunakan, dimodifikasi, dan didistribusikan kembali dengan tetap mempertahankan pemberitahuan hak cipta dan lisensi.
+
+Lihat file [`LICENSE`](LICENSE) untuk informasi lengkap mengenai lisensi yang digunakan.
+
+---
+
+## Pengembang
+
+**SahabatTeknisi**
+
+Project aplikasi jasa servis komputer dan jaringan Wi-Fi.
